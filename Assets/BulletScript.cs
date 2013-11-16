@@ -41,9 +41,21 @@ public class BulletScript : MonoBehaviour {
 		
 	}
 	
+	void OnCollisionEnter( Collision collision ) {
+		
+		if ( collision.collider.tag == "Centepede" && exploding == false ) {
+			//CentepedeScript.moving = false;
+			Explode();
+			Destroy(collision.collider.gameObject.rigidbody);
+			Destroy(collision.collider.gameObject);
+		}
+		
+	}
+	
 	void Explode() {
 		PlayerScript.canShoot = true;
 		exploding = true;
+		//(gameObject.GetComponent("SphereCollider") as SphereCollider).enabled = false;;
 		Destroy(gameObject,1);
 	}
 }

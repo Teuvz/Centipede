@@ -22,14 +22,14 @@ public class CameraScript : MonoBehaviour {
 			GameObject.Find("Intro Camera").camera.enabled = true;
 		}
 		
-		if ( playMushroomCam ) {
+		if ( playIntro == false && playMushroomCam == true ) {
 			GameObject.Find("Mushroom Camera").camera.enabled = true;
 		}
 		
 		if ( doCameraSetup == true && playMushroomCam == false )
 			( GameObject.Find("Player").GetComponent("PlayerScript") as PlayerScript ).generateMushrooms();
 		
-		if ( doCameraSetup == true && playMushroomCam == true )
+		if ( playIntro == false && doCameraSetup == true && playMushroomCam == true )
 			( GameObject.Find("Player").GetComponent("PlayerScript") as PlayerScript ).generateMushrooms();
 		
 		if ( doCameraSetup == false ) {
@@ -86,6 +86,7 @@ public class CameraScript : MonoBehaviour {
 			} else {
 				cameraSetup = true;
 				PlayerScript.playing = true;
+				CentepedeScript.moving = true;
 			}
 			
 		}
